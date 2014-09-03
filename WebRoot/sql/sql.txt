@@ -1,0 +1,21 @@
+create table user( 
+username varchar(30) primary key not null, 
+nick_name varchar(20) not null, 
+password varchar(20) not null, 
+sex varchar(1), 
+age int not null)
+signature varchar(100);
+
+create table user_friend( 
+username varchar(30) primary key references user(username), 
+f_username varchar(30) references user(username), 
+build_time varchar(20) , 
+categroy int 
+)
+
+create table chat_his( 
+id int primary key auto_increment, 
+from_user varchar(30) references user(username), 
+to_user varchar(30) references user(username), 
+time varchar(30) 
+)

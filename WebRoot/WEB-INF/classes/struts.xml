@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="basePackage" extends="json-default">
+		<interceptors>
+			<interceptor name="transaction" class="com.lhx.intecepter.TransactionInt"></interceptor>
+			<interceptor-stack name="transaction-stack">
+				<interceptor-ref name="transaction"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="transaction-stack"></default-interceptor-ref>
+	</package>
+	
+	<package name="user" extends="basePackage" namespace="/user">
+		<action name="regist" class="com.lhx.action.UserAction" method="regist">		
+		</action>
+		<action name="hasUsername" class="com.lhx.action.UserAction" method="checkUsername">
+		</action>
+		<action name="checkUser" class="com.lhx.action.UserAction" method="userLogin">
+		</action>
+		<action name="logout" class="com.lhx.action.UserAction" method="userLogout">
+		</action>
+		<action name="changeMsg" class="com.lhx.action.UserAction" method="changeUserMsg">
+		</action>
+		<action name="getUserById" class="com.lhx.action.AddFriendAction" method="getUserByLessUsername">
+		</action>
+		<action name="addFriend" class="com.lhx.action.AddFriendAction" method="addFriendById">
+		</action>		
+		<action name="findByCondition" class="com.lhx.action.AddFriendAction" method="findByCondition">
+		</action>
+	</package>
+	<package name="list" extends="basePackage" namespace="/list">
+		<action name="listByCtaegroy" class="com.lhx.action.ListFriendAction" method="listByCtaegroy">
+		</action>
+		<action name="getUserMsg" class="com.lhx.action.ListFriendAction" method="getUserMsg"></action>
+	</package>
+	
+	<package name="chat" extends="basePackage" namespace="/chat">
+		<action name="saveChatMsg" class="com.lhx.action.ChatMsgProcessAction" method="saveChatHis">
+		</action>
+		<action name="getChatMsg" class="com.lhx.action.ChatMsgProcessAction" method="getChatMsg"></action>
+		<action name="getLatestMsg" class="com.lhx.action.ChatMsgProcessAction" method="getLatestMsg">
+		</action>
+		<action name="getAllMessage" class="com.lhx.action.ChatMsgProcessAction" method="getAllUnMessage"></action>
+	</package>
+	
+	<package name="blog" extends="basePackage" namespace="/blog">
+		<action name="getBlog" class="com.lhx.action.BlogAction" method="getRecentBlog">
+			<result>/mylog.jsp</result>
+		</action>		
+		<action name="priseBlog" class="com.lhx.action.BlogAction" method="priseBlog">
+		</action>
+		<action name="responseBlog" class="com.lhx.action.BlogAction" method="responseBlog"></action>
+		<action name="addNewBlog" class="com.lhx.action.BlogAction" method="addNewBlog"></action>
+	</package>
+</struts>    
