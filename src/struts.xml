@@ -2,6 +2,7 @@
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
 	<package name="basePackage" extends="json-default">
+	<!-- add package description -->
 		<interceptors>
 			<interceptor name="transaction" class="com.lhx.intecepter.TransactionInt"></interceptor>
 			<interceptor-stack name="transaction-stack">
